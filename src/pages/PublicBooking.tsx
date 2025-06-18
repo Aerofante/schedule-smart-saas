@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -7,7 +6,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Calendar, Clock, User, ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-
 const PublicBooking = () => {
   const [step, setStep] = useState(1);
   const [selectedService, setSelectedService] = useState<any>(null);
@@ -23,116 +21,84 @@ const PublicBooking = () => {
     phone: "(11) 3456-7890",
     description: "Cuidados especializados em estética e bem-estar"
   };
-
-  const services = [
-    {
-      id: 1,
-      name: "Limpeza de Pele",
-      description: "Limpeza profunda com extração de cravos",
-      duration: 90,
-      price: 120,
-      category: "Facial"
-    },
-    {
-      id: 2,
-      name: "Massagem Relaxante",
-      description: "Massagem corporal para relaxamento",
-      duration: 60,
-      price: 100,
-      category: "Corporal"
-    },
-    {
-      id: 3,
-      name: "Drenagem Linfática",
-      description: "Técnica para redução de inchaço",
-      duration: 60,
-      price: 110,
-      category: "Corporal"
-    },
-    {
-      id: 4,
-      name: "Peeling Químico",
-      description: "Renovação celular da pele",
-      duration: 45,
-      price: 150,
-      category: "Facial"
-    }
-  ];
-
-  const professionals = [
-    {
-      id: 1,
-      name: "Dra. Ana Paula",
-      specialties: ["Facial", "Corporal"],
-      avatar: "",
-      experience: "5 anos de experiência"
-    },
-    {
-      id: 2,
-      name: "Terapeuta Maria",
-      specialties: ["Corporal"],
-      avatar: "",
-      experience: "8 anos de experiência"
-    },
-    {
-      id: 3,
-      name: "Esteticista Sofia",
-      specialties: ["Facial"],
-      avatar: "",
-      experience: "3 anos de experiência"
-    }
-  ];
-
-  const availableTimes = [
-    "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
-    "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"
-  ];
-
+  const services = [{
+    id: 1,
+    name: "Limpeza de Pele",
+    description: "Limpeza profunda com extração de cravos",
+    duration: 90,
+    price: 120,
+    category: "Facial"
+  }, {
+    id: 2,
+    name: "Massagem Relaxante",
+    description: "Massagem corporal para relaxamento",
+    duration: 60,
+    price: 100,
+    category: "Corporal"
+  }, {
+    id: 3,
+    name: "Drenagem Linfática",
+    description: "Técnica para redução de inchaço",
+    duration: 60,
+    price: 110,
+    category: "Corporal"
+  }, {
+    id: 4,
+    name: "Peeling Químico",
+    description: "Renovação celular da pele",
+    duration: 45,
+    price: 150,
+    category: "Facial"
+  }];
+  const professionals = [{
+    id: 1,
+    name: "Dra. Ana Paula",
+    specialties: ["Facial", "Corporal"],
+    avatar: "",
+    experience: "5 anos de experiência"
+  }, {
+    id: 2,
+    name: "Terapeuta Maria",
+    specialties: ["Corporal"],
+    avatar: "",
+    experience: "8 anos de experiência"
+  }, {
+    id: 3,
+    name: "Esteticista Sofia",
+    specialties: ["Facial"],
+    avatar: "",
+    experience: "3 anos de experiência"
+  }];
+  const availableTimes = ["09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00"];
   const handleServiceSelect = (service: any) => {
     setSelectedService(service);
     setStep(2);
   };
-
   const handleProfessionalSelect = (professional: any) => {
     setSelectedProfessional(professional);
     setStep(3);
   };
-
   const handleDateTimeSelect = (date: string, time: string) => {
     setSelectedDate(date);
     setSelectedTime(time);
     setStep(4);
   };
-
-  const nextWeekDays = Array.from({ length: 7 }, (_, i) => {
+  const nextWeekDays = Array.from({
+    length: 7
+  }, (_, i) => {
     const date = new Date();
     date.setDate(date.getDate() + i);
     return date;
   });
-
-  const renderStepIndicator = () => (
-    <div className="flex items-center justify-center mb-8">
-      {[1, 2, 3, 4].map((stepNum) => (
-        <div key={stepNum} className="flex items-center">
-          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
-            step >= stepNum 
-              ? 'bg-brand-500 text-white' 
-              : 'bg-gray-200 text-gray-500'
-          }`}>
+  const renderStepIndicator = () => <div className="flex items-center justify-center mb-8">
+      {[1, 2, 3, 4].map(stepNum => <div key={stepNum} className="flex items-center">
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${step >= stepNum ? 'bg-brand-500 text-white' : 'bg-gray-200 text-gray-500'}`}>
             {step > stepNum ? <Check className="w-4 h-4" /> : stepNum}
           </div>
-          {stepNum < 4 && (
-            <div className={`w-16 h-1 mx-2 ${
-              step > stepNum ? 'bg-brand-500' : 'bg-gray-200'
-            }`} />
-          )}
-        </div>
-      ))}
-    </div>
-  );
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+          {stepNum < 4 && <div className={`w-16 h-1 mx-2 ${step > stepNum ? 'bg-brand-500' : 'bg-gray-200'}`} />}
+        </div>)}
+    </div>;
+  return <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
       {/* Header */}
       <header className="bg-white border-b">
         <div className="max-w-4xl mx-auto px-6 py-6">
@@ -152,8 +118,7 @@ const PublicBooking = () => {
         {renderStepIndicator()}
 
         {/* Etapa 1: Seleção de Serviço */}
-        {step === 1 && (
-          <div className="space-y-6">
+        {step === 1 && <div className="space-y-6">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-gray-900 mb-2">
                 Escolha seu serviço
@@ -164,17 +129,12 @@ const PublicBooking = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {services.map((service) => (
-                <Card 
-                  key={service.id} 
-                  className="hover-lift cursor-pointer border-0 shadow-lg transition-all hover:shadow-xl"
-                  onClick={() => handleServiceSelect(service)}
-                >
+              {services.map(service => <Card key={service.id} onClick={() => handleServiceSelect(service)} className="hover-lift cursor-pointer border-0 shadow-lg transition-all hover:shadow-xl bg-slate-50">
                   <CardHeader>
                     <div className="flex justify-between items-start">
                       <div>
                         <CardTitle className="text-lg">{service.name}</CardTitle>
-                        <Badge variant="outline" className="mt-2">
+                        <Badge variant="outline" className="border-blue ">
                           {service.category}
                         </Badge>
                       </div>
@@ -194,21 +154,14 @@ const PublicBooking = () => {
                       {service.description}
                     </CardDescription>
                   </CardContent>
-                </Card>
-              ))}
+                </Card>)}
             </div>
-          </div>
-        )}
+          </div>}
 
         {/* Etapa 2: Seleção de Profissional */}
-        {step === 2 && (
-          <div className="space-y-6">
+        {step === 2 && <div className="space-y-6">
             <div className="text-center mb-8">
-              <Button 
-                variant="ghost" 
-                onClick={() => setStep(1)}
-                className="mb-4"
-              >
+              <Button variant="ghost" onClick={() => setStep(1)} className="mb-4">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Voltar
               </Button>
@@ -221,14 +174,7 @@ const PublicBooking = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {professionals
-                .filter(prof => prof.specialties.includes(selectedService?.category))
-                .map((professional) => (
-                <Card 
-                  key={professional.id}
-                  className="hover-lift cursor-pointer border-0 shadow-lg transition-all hover:shadow-xl text-center"
-                  onClick={() => handleProfessionalSelect(professional)}
-                >
+              {professionals.filter(prof => prof.specialties.includes(selectedService?.category)).map(professional => <Card key={professional.id} className="hover-lift cursor-pointer border-0 shadow-lg transition-all hover:shadow-xl text-center" onClick={() => handleProfessionalSelect(professional)}>
                   <CardHeader>
                     <Avatar className="w-20 h-20 mx-auto mb-4">
                       <AvatarImage src={professional.avatar} />
@@ -241,28 +187,19 @@ const PublicBooking = () => {
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2 justify-center">
-                      {professional.specialties.map((specialty, index) => (
-                        <Badge key={index} variant="outline">
+                      {professional.specialties.map((specialty, index) => <Badge key={index} variant="outline">
                           {specialty}
-                        </Badge>
-                      ))}
+                        </Badge>)}
                     </div>
                   </CardContent>
-                </Card>
-              ))}
+                </Card>)}
             </div>
-          </div>
-        )}
+          </div>}
 
         {/* Etapa 3: Seleção de Data e Hora */}
-        {step === 3 && (
-          <div className="space-y-6">
+        {step === 3 && <div className="space-y-6">
             <div className="text-center mb-8">
-              <Button 
-                variant="ghost" 
-                onClick={() => setStep(2)}
-                className="mb-4"
-              >
+              <Button variant="ghost" onClick={() => setStep(2)} className="mb-4">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Voltar
               </Button>
@@ -285,24 +222,16 @@ const PublicBooking = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 gap-2">
-                    {nextWeekDays.map((date, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setSelectedDate(date.toISOString().split('T')[0])}
-                        className={`p-3 rounded-lg text-left transition-colors ${
-                          selectedDate === date.toISOString().split('T')[0]
-                            ? 'bg-brand-500 text-white'
-                            : 'bg-gray-50 hover:bg-gray-100'
-                        }`}
-                      >
+                    {nextWeekDays.map((date, index) => <button key={index} onClick={() => setSelectedDate(date.toISOString().split('T')[0])} className={`p-3 rounded-lg text-left transition-colors ${selectedDate === date.toISOString().split('T')[0] ? 'bg-brand-500 text-white' : 'bg-gray-50 hover:bg-gray-100'}`}>
                         <div className="font-medium">
-                          {date.toLocaleDateString('pt-BR', { weekday: 'long' })}
+                          {date.toLocaleDateString('pt-BR', {
+                      weekday: 'long'
+                    })}
                         </div>
                         <div className="text-sm opacity-75">
                           {date.toLocaleDateString('pt-BR')}
                         </div>
-                      </button>
-                    ))}
+                      </button>)}
                   </div>
                 </CardContent>
               </Card>
@@ -316,38 +245,22 @@ const PublicBooking = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  {selectedDate ? (
-                    <div className="grid grid-cols-3 gap-2">
-                      {availableTimes.map((time) => (
-                        <button
-                          key={time}
-                          onClick={() => handleDateTimeSelect(selectedDate, time)}
-                          className="p-2 rounded-lg border text-center hover:bg-brand-50 hover:border-brand-200 transition-colors"
-                        >
+                  {selectedDate ? <div className="grid grid-cols-3 gap-2">
+                      {availableTimes.map(time => <button key={time} onClick={() => handleDateTimeSelect(selectedDate, time)} className="p-2 rounded-lg border text-center hover:bg-brand-50 hover:border-brand-200 transition-colors">
                           {time}
-                        </button>
-                      ))}
-                    </div>
-                  ) : (
-                    <p className="text-gray-500 text-center py-8">
+                        </button>)}
+                    </div> : <p className="text-gray-500 text-center py-8">
                       Selecione uma data primeiro
-                    </p>
-                  )}
+                    </p>}
                 </CardContent>
               </Card>
             </div>
-          </div>
-        )}
+          </div>}
 
         {/* Etapa 4: Dados pessoais e confirmação */}
-        {step === 4 && (
-          <div className="space-y-6">
+        {step === 4 && <div className="space-y-6">
             <div className="text-center mb-8">
-              <Button 
-                variant="ghost" 
-                onClick={() => setStep(3)}
-                className="mb-4"
-              >
+              <Button variant="ghost" onClick={() => setStep(3)} className="mb-4">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Voltar
               </Button>
@@ -388,10 +301,7 @@ const PublicBooking = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Observações (opcional)
                     </label>
-                    <Textarea 
-                      placeholder="Alguma informação importante para o atendimento..."
-                      rows={3}
-                    />
+                    <Textarea placeholder="Alguma informação importante para o atendimento..." rows={3} />
                   </div>
                 </CardContent>
               </Card>
@@ -444,11 +354,8 @@ const PublicBooking = () => {
                 </CardContent>
               </Card>
             </div>
-          </div>
-        )}
+          </div>}
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default PublicBooking;
