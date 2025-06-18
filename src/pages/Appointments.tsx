@@ -82,7 +82,7 @@ const Appointments = () => {
       case 'confirmado':
         return <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Confirmado</Badge>;
       case 'pendente':
-        return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100">Pendente</Badge>;
+        return <Badge className="bg-card text-yellow-800 hover:bg-card">Pendente</Badge>;
       case 'cancelado':
         return <Badge className="bg-red-100 text-red-800 hover:bg-red-100">Cancelado</Badge>;
       default:
