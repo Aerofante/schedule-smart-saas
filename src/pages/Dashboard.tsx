@@ -13,23 +13,23 @@ const Dashboard = () => {
       description: "3 ainda pendentes",
       icon: Calendar,
       color: "text-blue-600",
-      bgColor: "bg-blue-50"
+      bgColor: "bg-blue-100"
     },
     {
       title: "Clientes Ativos",
       value: "248",
       description: "+12 este mês",
       icon: Users,
-      color: "text-emerald-600", 
-      bgColor: "bg-emerald-50"
+      color: "text-green-600", 
+      bgColor: "bg-green-100"
     },
     {
       title: "Serviços Oferecidos",
       value: "15",
       description: "5 categorias",
       icon: Clock,
-      color: "text-violet-600",
-      bgColor: "bg-violet-50"
+      color: "text-purple-600",
+      bgColor: "bg-purple-100"
     }
   ];
 
@@ -71,11 +71,11 @@ const Dashboard = () => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'confirmado':
-        return 'bg-emerald-50 text-emerald-700 border border-emerald-200';
+        return 'bg-green-100 text-green-800';
       case 'pendente':
-        return 'bg-orange-50 text-orange-700 border border-orange-200';
+        return 'bg-yellow-100 text-yellow-800';
       default:
-        return 'bg-muted text-muted-foreground border';
+        return 'bg-gray-100 text-gray-800';
     }
   };
 
@@ -84,8 +84,8 @@ const Dashboard = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
-          <p className="text-muted-foreground">Visão geral da sua agenda hoje</p>
+          <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
+          <p className="text-gray-600">Visão geral da sua agenda hoje</p>
         </div>
         <div className="flex gap-3">
           <Link to="/app/appointments">
@@ -94,7 +94,7 @@ const Dashboard = () => {
               Ver Agenda
             </Button>
           </Link>
-          <Button className="bg-primary hover:bg-primary/90 text-primary-foreground flex items-center gap-2">
+          <Button className="gradient-brand border-0 flex items-center gap-2">
             <Plus className="w-4 h-4" />
             Novo Agendamento
           </Button>
@@ -104,9 +104,9 @@ const Dashboard = () => {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {stats.map((stat, index) => (
-          <Card key={index} className="hover-lift border shadow-sm">
+          <Card key={index} className="hover-lift border-0 shadow-lg">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium text-muted-foreground">
+              <CardTitle className="text-sm font-medium text-gray-600">
                 {stat.title}
               </CardTitle>
               <div className={`p-2 rounded-lg ${stat.bgColor}`}>
@@ -114,10 +114,10 @@ const Dashboard = () => {
               </div>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-foreground mb-1">
+              <div className="text-2xl font-bold text-gray-900 mb-1">
                 {stat.value}
               </div>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-gray-500">
                 {stat.description}
               </p>
             </CardContent>
@@ -128,7 +128,7 @@ const Dashboard = () => {
       {/* Today's Appointments */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
-          <Card className="border shadow-sm">
+          <Card className="border-0 shadow-lg">
             <CardHeader className="flex flex-row items-center justify-between">
               <div>
                 <CardTitle className="text-xl">Agendamentos de Hoje</CardTitle>
@@ -152,17 +152,17 @@ const Dashboard = () => {
                 {todayAppointments.map((appointment) => (
                   <div 
                     key={appointment.id}
-                    className="flex items-center justify-between p-4 rounded-lg border hover:bg-accent transition-colors"
+                    className="flex items-center justify-between p-4 rounded-lg border hover:bg-gray-50 transition-colors"
                   >
                     <div className="flex items-center gap-4">
-                      <div className="text-sm font-medium text-foreground w-16">
+                      <div className="text-sm font-medium text-gray-900 w-16">
                         {appointment.time}
                       </div>
                       <div>
-                        <div className="font-medium text-foreground">
+                        <div className="font-medium text-gray-900">
                           {appointment.client}
                         </div>
-                        <div className="text-sm text-muted-foreground">
+                        <div className="text-sm text-gray-500">
                           {appointment.service} • {appointment.professional}
                         </div>
                       </div>
@@ -179,7 +179,7 @@ const Dashboard = () => {
 
         {/* Quick Actions */}
         <div className="space-y-6">
-          <Card className="border shadow-sm">
+          <Card className="border-0 shadow-lg">
             <CardHeader>
               <CardTitle className="text-lg">Ações Rápidas</CardTitle>
             </CardHeader>
@@ -205,16 +205,16 @@ const Dashboard = () => {
             </CardContent>
           </Card>
 
-          <Card className="border shadow-sm bg-primary text-primary-foreground">
+          <Card className="border-0 shadow-lg gradient-brand text-white">
             <CardHeader>
-              <CardTitle className="text-lg text-primary-foreground">Link de Agendamento</CardTitle>
-              <CardDescription className="text-primary-foreground/80">
+              <CardTitle className="text-lg text-white">Link de Agendamento</CardTitle>
+              <CardDescription className="text-blue-100">
                 Compartilhe com seus clientes
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="bg-primary-foreground/20 rounded p-3 mb-4">
-                <code className="text-sm text-primary-foreground/90">
+              <div className="bg-white/20 rounded p-3 mb-4">
+                <code className="text-sm text-blue-100">
                   bookingpro.com/clinica-exemplo
                 </code>
               </div>
