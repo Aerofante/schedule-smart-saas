@@ -30,7 +30,7 @@ const Appointments = () => {
       professional: "Ana Costa",
       status: "confirmado" as const,
       notes: "Cliente preferida corte mais curto",
-      color: "bg-green-100 text-green-800"
+      color: "bg-success/10 text-success-foreground"
     },
     {
       id: "2024-01-15-2",
@@ -48,7 +48,7 @@ const Appointments = () => {
       professional: "Carlos Lima",
       status: "pendente" as const,
       notes: "",
-      color: "bg-yellow-100 text-yellow-800"
+      color: "bg-warning/10 text-warning-foreground"
     },
     {
       id: "2024-01-15-3",
@@ -66,7 +66,7 @@ const Appointments = () => {
       professional: "Beatriz Rocha",
       status: "confirmado" as const,
       notes: "Esmalte vermelho",
-      color: "bg-green-100 text-green-800"
+      color: "bg-success/10 text-success-foreground"
     },
     {
       id: "2024-01-16-1",
@@ -84,7 +84,7 @@ const Appointments = () => {
       professional: "Maria Fernanda",
       status: "confirmado" as const,
       notes: "Alergia a óleos cítricos",
-      color: "bg-green-100 text-green-800"
+      color: "bg-success/10 text-success-foreground"
     }
   ];
 
@@ -101,11 +101,11 @@ const Appointments = () => {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'confirmado':
-        return <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Confirmado</Badge>;
+        return <Badge className="bg-success/10 text-success-foreground hover:bg-success/20">Confirmado</Badge>;
       case 'pendente':
-        return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100">Pendente</Badge>;
+        return <Badge className="bg-warning/10 text-warning-foreground hover:bg-warning/20">Pendente</Badge>;
       case 'cancelado':
-        return <Badge className="bg-red-100 text-red-800 hover:bg-red-100">Cancelado</Badge>;
+        return <Badge className="bg-destructive/10 text-destructive-foreground hover:bg-destructive/20">Cancelado</Badge>;
       default:
         return <Badge variant="secondary">{status}</Badge>;
     }
@@ -253,7 +253,7 @@ const Appointments = () => {
                         <div className="flex items-center gap-2">
                           <span className="font-medium text-gray-700">Serviço:</span>
                           <span>{appointment.service.name}</span>
-                          <span className="text-green-600 font-medium">
+                          <span className="text-success font-medium">
                             R$ {appointment.service.price}
                           </span>
                         </div>
@@ -281,7 +281,7 @@ const Appointments = () => {
                         Remarcar
                       </Button>
                       {appointment.status === 'pendente' && (
-                        <Button size="sm" className="bg-gradient-to-r from-emerald-500 to-emerald-700 text-white border-0 flex-1 lg:flex-none">
+                        <Button size="sm" className="bg-gradient-to-r from-success to-success text-white border-0 flex-1 lg:flex-none">
                           Confirmar
                         </Button>
                       )}
