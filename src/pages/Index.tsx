@@ -43,7 +43,7 @@ const Index = () => {
       <header className="px-6 py-4 bg-white/80 backdrop-blur-md border-b sticky top-0 z-50">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl gradient-brand flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-600 to-blue-800 flex items-center justify-center">
               <Calendar className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -56,7 +56,7 @@ const Index = () => {
               <Button variant="outline">Agendar Demo</Button>
             </Link>
             <Link to="/app">
-              <Button className="gradient-brand border-0">Acessar Sistema</Button>
+              <Button className="bg-gradient-to-r from-blue-600 to-blue-800 text-white border-0">Acessar Sistema</Button>
             </Link>
           </div>
         </div>
@@ -68,7 +68,7 @@ const Index = () => {
           <div className="animate-fade-in">
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
               Transforme sua
-              <span className="text-transparent bg-clip-text gradient-brand"> Agenda</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-blue-800"> Agenda</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
               Sistema completo de agendamento para clínicas de estética, barbearias, 
@@ -76,12 +76,12 @@ const Index = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/app">
-                <Button size="lg" className="gradient-brand border-0 text-lg px-8 py-3 hover-lift">
+                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-blue-800 text-white border-0 text-lg px-8 py-3 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl">
                   Começar Gratuitamente
                 </Button>
               </Link>
               <Link to="/booking">
-                <Button size="lg" variant="outline" className="text-lg px-8 py-3 hover-lift">
+                <Button size="lg" variant="outline" className="text-lg px-8 py-3 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl">
                   Ver Demonstração
                 </Button>
               </Link>
@@ -104,9 +104,9 @@ const Index = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="hover-lift border-0 shadow-lg">
+              <Card key={index} className="transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl border-0 shadow-lg">
                 <CardHeader className="text-center">
-                  <div className="w-16 h-16 mx-auto rounded-2xl gradient-brand flex items-center justify-center mb-4">
+                  <div className="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-r from-blue-600 to-blue-800 flex items-center justify-center mb-4">
                     <feature.icon className="w-8 h-8 text-white" />
                   </div>
                   <CardTitle className="text-xl">{feature.title}</CardTitle>
@@ -137,7 +137,7 @@ const Index = () => {
               <div className="space-y-4">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="flex items-center gap-3">
-                    <div className="w-6 h-6 rounded-full gradient-success flex items-center justify-center flex-shrink-0">
+                    <div className="w-6 h-6 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-700 flex items-center justify-center flex-shrink-0">
                       <Check className="w-4 h-4 text-white" />
                     </div>
                     <span className="text-gray-700">{benefit}</span>
@@ -146,9 +146,9 @@ const Index = () => {
               </div>
             </div>
             <div className="relative">
-              <div className="glass-effect rounded-3xl p-8 shadow-2xl">
+              <div className="backdrop-blur-md bg-white/80 border border-white/20 rounded-3xl p-8 shadow-2xl">
                 <div className="text-center">
-                  <div className="w-20 h-20 mx-auto rounded-2xl gradient-brand flex items-center justify-center mb-6">
+                  <div className="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-r from-blue-600 to-blue-800 flex items-center justify-center mb-6">
                     <Calendar className="w-10 h-10 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
@@ -158,7 +158,7 @@ const Index = () => {
                     Configure sua empresa em minutos e comece a receber agendamentos
                   </p>
                   <Link to="/app">
-                    <Button className="gradient-brand border-0 w-full">
+                    <Button className="bg-gradient-to-r from-blue-600 to-blue-800 text-white border-0 w-full">
                       Criar Conta Gratuita
                     </Button>
                   </Link>
@@ -173,7 +173,7 @@ const Index = () => {
       <footer className="px-6 py-12 bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-10 h-10 rounded-xl gradient-brand flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-r from-blue-600 to-blue-800 flex items-center justify-center">
               <Calendar className="w-5 h-5 text-white" />
             </div>
             <span className="text-xl font-bold">BookingPro</span>

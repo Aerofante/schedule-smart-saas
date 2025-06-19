@@ -94,7 +94,7 @@ const Dashboard = () => {
               Ver Agenda
             </Button>
           </Link>
-          <Button className="gradient-brand border-0 flex items-center gap-2">
+          <Button className="bg-gradient-to-r from-blue-600 to-blue-800 text-white border-0 flex items-center gap-2">
             <Plus className="w-4 h-4" />
             Novo Agendamento
           </Button>
@@ -104,7 +104,7 @@ const Dashboard = () => {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {stats.map((stat, index) => (
-          <Card key={index} className="hover-lift border-0 shadow-lg">
+          <Card key={index} className="transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl border-0 shadow-lg">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium text-gray-600">
                 {stat.title}
@@ -205,7 +205,7 @@ const Dashboard = () => {
             </CardContent>
           </Card>
 
-          <Card className="border-0 shadow-lg gradient-brand text-white">
+          <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-600 to-blue-800 text-white">
             <CardHeader>
               <CardTitle className="text-lg text-white">Link de Agendamento</CardTitle>
               <CardDescription className="text-blue-100">

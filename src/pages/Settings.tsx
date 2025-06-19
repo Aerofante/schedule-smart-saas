@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -74,7 +73,7 @@ const Settings = () => {
                   rows={3}
                 />
               </div>
-              <Button className="gradient-brand border-0">
+              <Button className="bg-gradient-to-r from-blue-600 to-blue-800 text-white border-0">
                 Salvar Alterações
               </Button>
             </CardContent>
@@ -126,7 +125,7 @@ const Settings = () => {
                   )}
                 </div>
               ))}
-              <Button className="gradient-brand border-0">
+              <Button className="bg-gradient-to-r from-blue-600 to-blue-800 text-white border-0">
                 Salvar Horários
               </Button>
             </CardContent>
@@ -179,7 +178,7 @@ const Settings = () => {
         {/* Sidebar de Informações */}
         <div className="space-y-6">
           {/* Link de Agendamento */}
-          <Card className="border-0 shadow-lg gradient-brand text-white">
+          <Card className="border-0 shadow-lg bg-gradient-to-r from-blue-600 to-blue-800 text-white">
             <CardHeader>
               <CardTitle className="text-white flex items-center gap-2">
                 <Link className="w-5 h-5" />

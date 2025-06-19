@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -122,7 +121,7 @@ const Services = () => {
             <Settings className="w-4 h-4" />
             Categorias
           </Button>
-          <Button className="gradient-brand border-0 flex items-center gap-2">
+          <Button className="bg-gradient-to-r from-blue-600 to-blue-800 text-white border-0 flex items-center gap-2">
             <Plus className="w-4 h-4" />
             Novo Serviço
           </Button>
@@ -216,7 +215,7 @@ const Services = () => {
             
             <div className="grid gap-4">
               {category.services.map((service) => (
-                <Card key={service.id} className="hover-lift border-0 shadow-lg">
+                <Card key={service.id} className="transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl border-0 shadow-lg">
                   <CardContent className="pt-6">
                     <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center">
                       {/* Informações do Serviço */}
@@ -276,7 +275,7 @@ const Services = () => {
             <p className="text-gray-500 mb-6">
               Adicione serviços para começar a receber agendamentos
             </p>
-            <Button className="gradient-brand border-0">
+            <Button className="bg-gradient-to-r from-blue-600 to-blue-800 text-white border-0">
               <Plus className="w-4 h-4 mr-2" />
               Criar Primeiro Serviço
             </Button>

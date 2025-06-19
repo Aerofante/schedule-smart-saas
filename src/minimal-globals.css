@@ -3,8 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
-
+/* Variáveis do tema - definidas apenas no CSS raiz */
 @layer base {
   :root {
     --background: 249 250 251;
@@ -87,6 +86,7 @@
   }
 }
 
+/* Reset básico usando utilities Tailwind */
 @layer base {
   * {
     @apply border-border;
@@ -94,30 +94,5 @@
 
   body {
     @apply bg-background text-foreground font-sans;
-  }
-}
-
-@layer components {
-  .gradient-brand {
-    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-  }
-  
-  .gradient-success {
-    background: linear-gradient(135deg, #10b981 0%, #047857 100%);
-  }
-  
-  .glass-effect {
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  
-  .hover-lift {
-    transition: all 0.2s ease;
-  }
-  
-  .hover-lift:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
   }
 }

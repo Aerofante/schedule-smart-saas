@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -79,7 +78,7 @@ const Professionals = () => {
           <h1 className="text-3xl font-bold text-gray-900">Profissionais</h1>
           <p className="text-gray-600">Gerencie sua equipe e suas especialidades</p>
         </div>
-        <Button className="gradient-brand border-0 flex items-center gap-2">
+        <Button className="bg-gradient-to-r from-blue-600 to-blue-800 text-white border-0 flex items-center gap-2">
           <Plus className="w-4 h-4" />
           Novo Profissional
         </Button>
@@ -147,7 +146,7 @@ const Professionals = () => {
       {/* Lista de Profissionais */}
       <div className="grid gap-6">
         {professionals.map((professional) => (
-          <Card key={professional.id} className="hover-lift border-0 shadow-lg">
+          <Card key={professional.id} className="transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl border-0 shadow-lg">
             <CardContent className="pt-6">
               <div className="flex flex-col lg:flex-row gap-6">
                 {/* Informações Básicas */}
@@ -234,7 +233,7 @@ const Professionals = () => {
             <p className="text-gray-500 mb-6">
               Adicione profissionais à sua equipe para começar
             </p>
-            <Button className="gradient-brand border-0">
+            <Button className="bg-gradient-to-r from-blue-600 to-blue-800 text-white border-0">
               <Plus className="w-4 h-4 mr-2" />
               Adicionar Profissional
             </Button>

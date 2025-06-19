@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -161,7 +160,7 @@ const Appointments = () => {
             </button>
           </div>
           <Button 
-            className="gradient-brand border-0 flex items-center gap-2"
+            className="bg-gradient-to-r from-blue-600 to-blue-800 text-white border-0 flex items-center gap-2"
             onClick={() => setShowNewAppointment(true)}
           >
             <Plus className="w-4 h-4" />
@@ -222,7 +221,7 @@ const Appointments = () => {
           {/* Lista de Agendamentos */}
           <div className="grid gap-4">
             {appointments.map((appointment) => (
-              <Card key={appointment.id} className="hover-lift border-0 shadow-lg">
+              <Card key={appointment.id} className="transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl border-0 shadow-lg">
                 <CardContent className="pt-6">
                   <div className="flex flex-col lg:flex-row gap-4">
                     {/* Horário */}
@@ -282,7 +281,7 @@ const Appointments = () => {
                         Remarcar
                       </Button>
                       {appointment.status === 'pendente' && (
-                        <Button size="sm" className="gradient-success border-0 flex-1 lg:flex-none">
+                        <Button size="sm" className="bg-gradient-to-r from-emerald-500 to-emerald-700 text-white border-0 flex-1 lg:flex-none">
                           Confirmar
                         </Button>
                       )}
@@ -302,7 +301,7 @@ const Appointments = () => {
         onSubmit={handleNewAppointment}
       />
 
-      {/* Empty State - Mostrar quando não há agendamentos */}
+      {/* Empty State */}
       {appointments.length === 0 && (
         <Card className="border-0 shadow-lg">
           <CardContent className="pt-12 pb-12 text-center">
@@ -314,7 +313,7 @@ const Appointments = () => {
               Comece criando seu primeiro agendamento
             </p>
             <Button 
-              className="gradient-brand border-0"
+              className="bg-gradient-to-r from-blue-600 to-blue-800 text-white border-0"
               onClick={() => setShowNewAppointment(true)}
             >
               <Plus className="w-4 h-4 mr-2" />
