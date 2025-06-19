@@ -29,7 +29,7 @@ const menuItems = [{
 export function AppSidebar() {
   const location = useLocation();
   return <Sidebar className="border-r bg-white">
-      <SidebarHeader className="p-6">
+      <SidebarHeader className="p-6 bg-slate-50">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-600 to-blue-800 flex items-center justify-center">
             <Calendar className="w-4 h-4 text-white" />
