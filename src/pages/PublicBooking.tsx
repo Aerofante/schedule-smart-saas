@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Calendar, Clock, User, ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+
 const PublicBooking = () => {
   const [step, setStep] = useState(1);
   const [selectedService, setSelectedService] = useState<any>(null);
@@ -92,23 +93,23 @@ const PublicBooking = () => {
   });
   const renderStepIndicator = () => <div className="flex items-center justify-center mb-8">
       {[1, 2, 3, 4].map(stepNum => <div key={stepNum} className="flex items-center">
-          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${step >= stepNum ? 'bg-brand-500 text-white' : 'bg-gray-200 text-gray-500'}`}>
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${step >= stepNum ? 'bg-primary text-primary-foreground' : 'bg-slate-50 text-muted-foreground'}`}>
             {step > stepNum ? <Check className="w-4 h-4" /> : stepNum}
           </div>
-          {stepNum < 4 && <div className={`w-16 h-1 mx-2 ${step > stepNum ? 'bg-brand-500' : 'bg-gray-200'}`} />}
+          {stepNum < 4 && <div className={`w-16 h-1 mx-2 ${step > stepNum ? 'bg-primary' : 'bg-slate-50'}`} />}
         </div>)}
     </div>;
-  return <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+  return <div className="min-h-screen bg-slate-50">
       {/* Header */}
-      <header className="bg-white border-b">
+      <header className="bg-slate-50 border-b">
         <div className="max-w-4xl mx-auto px-6 py-6">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl gradient-brand flex items-center justify-center">
-              <Calendar className="w-6 h-6 text-white" />
+            <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center">
+              <Calendar className="w-6 h-6 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">{company.name}</h1>
-              <p className="text-gray-600">{company.description}</p>
+              <h1 className="text-2xl font-bold text-foreground">{company.name}</h1>
+              <p className="text-muted-foreground">{company.description}</p>
             </div>
           </div>
         </div>
@@ -120,29 +121,29 @@ const PublicBooking = () => {
         {/* Etapa 1: Seleção de Serviço */}
         {step === 1 && <div className="space-y-6">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">
+              <h2 className="text-3xl font-bold text-foreground mb-2">
                 Escolha seu serviço
               </h2>
-              <p className="text-gray-600">
+              <p className="text-muted-foreground">
                 Selecione o tratamento que deseja realizar
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {services.map(service => <Card key={service.id} onClick={() => handleServiceSelect(service)} className="hover-lift cursor-pointer border-0 shadow-lg transition-all hover:shadow-xl bg-slate-50">
+              {services.map(service => <Card key={service.id} onClick={() => handleServiceSelect(service)} className="cursor-pointer border-0 shadow-lg transition-all hover:shadow-xl bg-slate-50 hover:bg-slate-100">
                   <CardHeader>
                     <div className="flex justify-between items-start">
                       <div>
                         <CardTitle className="text-lg">{service.name}</CardTitle>
-                        <Badge variant="outline" className="border-blue ">
+                        <Badge variant="outline" className="bg-slate-50">
                           {service.category}
                         </Badge>
                       </div>
                       <div className="text-right">
-                        <div className="text-2xl font-bold text-brand-600">
+                        <div className="text-2xl font-bold text-primary">
                           R$ {service.price}
                         </div>
-                        <div className="text-sm text-gray-500 flex items-center gap-1">
+                        <div className="text-sm text-muted-foreground flex items-center gap-1">
                           <Clock className="w-3 h-3" />
                           {service.duration}min
                         </div>
@@ -150,7 +151,7 @@ const PublicBooking = () => {
                     </div>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-gray-600">
+                    <CardDescription className="text-muted-foreground">
                       {service.description}
                     </CardDescription>
                   </CardContent>
@@ -161,24 +162,24 @@ const PublicBooking = () => {
         {/* Etapa 2: Seleção de Profissional */}
         {step === 2 && <div className="space-y-6">
             <div className="text-center mb-8">
-              <Button variant="ghost" onClick={() => setStep(1)} className="mb-4">
+              <Button variant="ghost" onClick={() => setStep(1)} className="mb-4 bg-slate-50">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Voltar
               </Button>
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">
+              <h2 className="text-3xl font-bold text-foreground mb-2">
                 Escolha o profissional
               </h2>
-              <p className="text-gray-600">
+              <p className="text-muted-foreground">
                 Selecione quem irá realizar seu {selectedService?.name}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {professionals.filter(prof => prof.specialties.includes(selectedService?.category)).map(professional => <Card key={professional.id} className="hover-lift cursor-pointer border-0 shadow-lg transition-all hover:shadow-xl text-center" onClick={() => handleProfessionalSelect(professional)}>
+              {professionals.filter(prof => prof.specialties.includes(selectedService?.category)).map(professional => <Card key={professional.id} className="cursor-pointer border-0 shadow-lg transition-all hover:shadow-xl text-center bg-slate-50 hover:bg-slate-100" onClick={() => handleProfessionalSelect(professional)}>
                   <CardHeader>
                     <Avatar className="w-20 h-20 mx-auto mb-4">
                       <AvatarImage src={professional.avatar} />
-                      <AvatarFallback className="bg-brand-100 text-brand-600 text-xl">
+                      <AvatarFallback className="bg-slate-50 text-primary text-xl">
                         {professional.name.split(' ').map(n => n[0]).join('')}
                       </AvatarFallback>
                     </Avatar>
@@ -187,7 +188,7 @@ const PublicBooking = () => {
                   </CardHeader>
                   <CardContent>
                     <div className="flex flex-wrap gap-2 justify-center">
-                      {professional.specialties.map((specialty, index) => <Badge key={index} variant="outline">
+                      {professional.specialties.map((specialty, index) => <Badge key={index} variant="outline" className="bg-slate-50">
                           {specialty}
                         </Badge>)}
                     </div>
@@ -199,21 +200,21 @@ const PublicBooking = () => {
         {/* Etapa 3: Seleção de Data e Hora */}
         {step === 3 && <div className="space-y-6">
             <div className="text-center mb-8">
-              <Button variant="ghost" onClick={() => setStep(2)} className="mb-4">
+              <Button variant="ghost" onClick={() => setStep(2)} className="mb-4 bg-slate-50">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Voltar
               </Button>
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">
+              <h2 className="text-3xl font-bold text-foreground mb-2">
                 Escolha data e horário
               </h2>
-              <p className="text-gray-600">
+              <p className="text-muted-foreground">
                 Disponibilidade para {selectedProfessional?.name}
               </p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Calendário */}
-              <Card className="border-0 shadow-lg">
+              <Card className="border-0 shadow-lg bg-slate-50">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Calendar className="w-5 h-5" />
@@ -222,7 +223,7 @@ const PublicBooking = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 gap-2">
-                    {nextWeekDays.map((date, index) => <button key={index} onClick={() => setSelectedDate(date.toISOString().split('T')[0])} className={`p-3 rounded-lg text-left transition-colors ${selectedDate === date.toISOString().split('T')[0] ? 'bg-brand-500 text-white' : 'bg-gray-50 hover:bg-gray-100'}`}>
+                    {nextWeekDays.map((date, index) => <button key={index} onClick={() => setSelectedDate(date.toISOString().split('T')[0])} className={`p-3 rounded-lg text-left transition-colors ${selectedDate === date.toISOString().split('T')[0] ? 'bg-primary text-primary-foreground' : 'bg-slate-50 hover:bg-slate-100'}`}>
                         <div className="font-medium">
                           {date.toLocaleDateString('pt-BR', {
                       weekday: 'long'
@@ -246,10 +247,10 @@ const PublicBooking = () => {
                 </CardHeader>
                 <CardContent>
                   {selectedDate ? <div className="grid grid-cols-3 gap-2">
-                      {availableTimes.map(time => <button key={time} onClick={() => handleDateTimeSelect(selectedDate, time)} className="p-2 rounded-lg border text-center hover:bg-brand-50 hover:border-brand-200 transition-colors">
+                      {availableTimes.map(time => <button key={time} onClick={() => handleDateTimeSelect(selectedDate, time)} className="p-2 rounded-lg border text-center bg-slate-50 hover:bg-slate-100 hover:border-primary/50 transition-colors">
                           {time}
                         </button>)}
-                    </div> : <p className="text-gray-500 text-center py-8">
+                    </div> : <p className="text-muted-foreground text-center py-8">
                       Selecione uma data primeiro
                     </p>}
                 </CardContent>
@@ -260,95 +261,95 @@ const PublicBooking = () => {
         {/* Etapa 4: Dados pessoais e confirmação */}
         {step === 4 && <div className="space-y-6">
             <div className="text-center mb-8">
-              <Button variant="ghost" onClick={() => setStep(3)} className="mb-4">
+              <Button variant="ghost" onClick={() => setStep(3)} className="mb-4 bg-slate-50">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Voltar
               </Button>
-              <h2 className="text-3xl font-bold text-gray-900 mb-2">
+              <h2 className="text-3xl font-bold text-foreground mb-2">
                 Confirme seu agendamento
               </h2>
-              <p className="text-gray-600">
+              <p className="text-muted-foreground">
                 Preencha seus dados para finalizar
               </p>
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Formulário */}
-              <Card className="border-0 shadow-lg">
+              <Card className="border-0 shadow-lg bg-slate-50">
                 <CardHeader>
                   <CardTitle>Seus dados</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-foreground mb-1">
                       Nome completo *
                     </label>
-                    <Input placeholder="Digite seu nome" />
+                    <Input placeholder="Digite seu nome" className="bg-slate-50" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-foreground mb-1">
                       E-mail *
                     </label>
-                    <Input type="email" placeholder="seu@email.com" />
+                    <Input type="email" placeholder="seu@email.com" className="bg-slate-50" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-foreground mb-1">
                       Telefone *
                     </label>
-                    <Input placeholder="(11) 99999-9999" />
+                    <Input placeholder="(11) 99999-9999" className="bg-slate-50" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-foreground mb-1">
                       Observações (opcional)
                     </label>
-                    <Textarea placeholder="Alguma informação importante para o atendimento..." rows={3} />
+                    <Textarea placeholder="Alguma informação importante para o atendimento..." rows={3} className="bg-slate-50" />
                   </div>
                 </CardContent>
               </Card>
 
               {/* Resumo */}
-              <Card className="border-0 shadow-lg">
+              <Card className="border-0 shadow-lg bg-slate-50">
                 <CardHeader>
                   <CardTitle>Resumo do agendamento</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Serviço:</span>
+                      <span className="text-muted-foreground">Serviço:</span>
                       <span className="font-medium">{selectedService?.name}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Profissional:</span>
+                      <span className="text-muted-foreground">Profissional:</span>
                       <span className="font-medium">{selectedProfessional?.name}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Data:</span>
+                      <span className="text-muted-foreground">Data:</span>
                       <span className="font-medium">
                         {selectedDate && new Date(selectedDate + 'T00:00:00').toLocaleDateString('pt-BR')}
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Horário:</span>
+                      <span className="text-muted-foreground">Horário:</span>
                       <span className="font-medium">{selectedTime}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600">Duração:</span>
+                      <span className="text-muted-foreground">Duração:</span>
                       <span className="font-medium">{selectedService?.duration} minutos</span>
                     </div>
                     <div className="border-t pt-3">
                       <div className="flex justify-between text-lg font-bold">
                         <span>Total:</span>
-                        <span className="text-brand-600">R$ {selectedService?.price}</span>
+                        <span className="text-primary">R$ {selectedService?.price}</span>
                       </div>
                     </div>
                   </div>
 
-                  <Button className="w-full gradient-brand border-0 mt-6">
+                  <Button className="w-full bg-primary text-primary-foreground border-0 mt-6">
                     <Check className="w-4 h-4 mr-2" />
                     Confirmar Agendamento
                   </Button>
 
-                  <p className="text-xs text-gray-500 text-center">
+                  <p className="text-xs text-muted-foreground text-center">
                     Você receberá uma confirmação por e-mail
                   </p>
                 </CardContent>
