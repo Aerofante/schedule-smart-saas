@@ -237,7 +237,7 @@ const PublicBooking = () => {
               </Card>
 
               {/* Horários */}
-              <Card className="border-0 shadow-lg">
+              <Card className="border-0 shadow-lg bg-slate-50">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Clock className="w-5 h-5" />
